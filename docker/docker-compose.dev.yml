@@ -1,0 +1,61 @@
+services:
+  # Vectis app database (stores projects, pipelines, runs, etc.)
+  vectis-db:
+    image: postgres:17-alpine
+    container_name: vectis-app-db
+    environment:
+      POSTGRES_DB: vectis
+      POSTGRES_USER: vectis
+      POSTGRES_PASSWORD: ${VECTIS_DB_PASSWORD:?Set VECTIS_DB_PASSWORD in your environment}
+    ports:
+      - "127.0.0.1:5440:5432"
+    volumes:
+      - vectis_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U vectis"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  # Test source database (simulate source data to extract from)
+  source-db:
+    image: postgres:17-alpine
+    container_name: vectis-source-db
+    environment:
+      POSTGRES_DB: source_crm
+      POSTGRES_USER: vectis
+      POSTGRES_PASSWORD: ${VECTIS_DB_PASSWORD:?Set VECTIS_DB_PASSWORD in your environment}
+    ports:
+      - "127.0.0.1:5441:5432"
+    volumes:
+      - vectis_source:/var/lib/postgresql/data
+      - ./init-source.sql:/docker-entrypoint-initdb.d/01-init.sql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U vectis"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  # Test destination database (target for pipeline loads)
+  dest-db:
+    image: postgres:17-alpine
+    container_name: vectis-dest-db
+    environment:
+      POSTGRES_DB: dest_warehouse
+      POSTGRES_USER: vectis
+      POSTGRES_PASSWORD: ${VECTIS_DB_PASSWORD:?Set VECTIS_DB_PASSWORD in your environment}
+    ports:
+      - "127.0.0.1:5442:5432"
+    volumes:
+      - vectis_dest:/var/lib/postgresql/data
+      - ./init-dest.sql:/docker-entrypoint-initdb.d/01-init.sql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U vectis"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  vectis_pgdata:
+  vectis_source:
+  vectis_dest:

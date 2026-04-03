@@ -1,0 +1,48 @@
+services:
+  db:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_DB: vectis
+      POSTGRES_USER: vectis
+      POSTGRES_PASSWORD: ${VECTIS_DB_PASSWORD:?Set VECTIS_DB_PASSWORD in your environment}
+    ports:
+      - "127.0.0.1:5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U vectis"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build:
+      context: ../backend
+      dockerfile: ../docker/Dockerfile.backend
+    environment:
+      VECTIS_DATABASE_URL: postgresql+asyncpg://vectis:${VECTIS_DB_PASSWORD}@db:5432/vectis
+      VECTIS_SECRET_KEY: ${VECTIS_SECRET_KEY:?Set VECTIS_SECRET_KEY in your environment}
+      VECTIS_DEBUG: "true"
+    ports:
+      - "127.0.0.1:8000:8000"
+    depends_on:
+      db:
+        condition: service_healthy
+    volumes:
+      - ../backend/src:/app/src
+
+  frontend:
+    build:
+      context: ../frontend
+      dockerfile: ../docker/Dockerfile.frontend
+    environment:
+      VITE_API_URL: http://backend:8000/api/v1
+    ports:
+      - "127.0.0.1:5173:5173"
+    depends_on:
+      - backend
+    volumes:
+      - ../frontend/src:/app/src
+
+volumes:
+  pgdata:

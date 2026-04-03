@@ -1,0 +1,866 @@
+{
+  "projects": [
+    {
+      "id": 1,
+      "name": "Default",
+      "description": "Default project for existing pipelines",
+      "created_by": "system",
+      "created_at": "2026-03-19T12:48:02.5166667",
+      "updated_at": "2026-03-19T12:48:02.5166667",
+      "pipeline_count": 8,
+      "active_runs": 0
+    }
+  ],
+  "connections": [
+    {
+      "id": 7,
+      "name": "COOL Beta",
+      "type": "azure_sql",
+      "description": "COOL Beta database (cool-beta on sf-core-beta)",
+      "created_at": "2026-03-17T16:57:42.2566667",
+      "config_env": "VECTIS_CONN_COOL_BETA"
+    },
+    {
+      "id": 3,
+      "name": "Sql Beta",
+      "type": "azure_sql",
+      "description": "CRM migration staging database (cool-crm-migration on sf-core-beta)",
+      "created_at": "2026-03-13T18:25:59.7166667",
+      "config_env": "VECTIS_CONN_SQL_BETA"
+    },
+    {
+      "id": 1,
+      "name": "CRM Beta",
+      "type": "dynamics_crm",
+      "description": "Dynamics 365 CRM Beta environment",
+      "created_at": "2026-03-13T17:09:31.6333333",
+      "config_env": "VECTIS_CONN_CRM_BETA"
+    }
+  ],
+  "pipelines": [
+    {
+      "id": 26,
+      "name": "Load Billing to COOL",
+      "description": null,
+      "source_connection_id": 3,
+      "dest_connection_id": 7,
+      "status": "active",
+      "config": null,
+      "created_at": "2026-03-24T18:09:50.67",
+      "updated_at": "2026-03-24T18:09:50.67",
+      "created_by": null,
+      "dest_schema": "billing",
+      "project_id": 1,
+      "tags": ["load", "billing"],
+      "settings": null,
+      "source_name": "Sql Beta",
+      "source_type": "azure_sql",
+      "dest_name": "COOL Beta",
+      "dest_type": "azure_sql"
+    },
+    {
+      "id": 25,
+      "name": "Extract Billing from CRM",
+      "description": null,
+      "source_connection_id": 1,
+      "dest_connection_id": 3,
+      "status": "active",
+      "config": null,
+      "created_at": "2026-03-24T18:09:50.6666667",
+      "updated_at": "2026-03-24T18:09:50.6666667",
+      "created_by": null,
+      "dest_schema": "dbo",
+      "project_id": 1,
+      "tags": ["extract", "billing"],
+      "settings": null,
+      "source_name": "CRM Beta",
+      "source_type": "dynamics_crm",
+      "dest_name": "Sql Beta",
+      "dest_type": "azure_sql"
+    },
+    {
+      "id": 24,
+      "name": "Load Orders to COOL",
+      "description": null,
+      "source_connection_id": 3,
+      "dest_connection_id": 7,
+      "status": "active",
+      "config": null,
+      "created_at": "2026-03-24T18:09:50.6633333",
+      "updated_at": "2026-03-24T18:09:50.6633333",
+      "created_by": null,
+      "dest_schema": "orders",
+      "project_id": 1,
+      "tags": ["load", "orders"],
+      "settings": null,
+      "source_name": "Sql Beta",
+      "source_type": "azure_sql",
+      "dest_name": "COOL Beta",
+      "dest_type": "azure_sql"
+    },
+    {
+      "id": 23,
+      "name": "Extract Orders from CRM",
+      "description": null,
+      "source_connection_id": 1,
+      "dest_connection_id": 3,
+      "status": "active",
+      "config": null,
+      "created_at": "2026-03-24T18:09:50.66",
+      "updated_at": "2026-03-24T18:09:50.66",
+      "created_by": null,
+      "dest_schema": "dbo",
+      "project_id": 1,
+      "tags": ["extract", "orders"],
+      "settings": null,
+      "source_name": "CRM Beta",
+      "source_type": "dynamics_crm",
+      "dest_name": "Sql Beta",
+      "dest_type": "azure_sql"
+    },
+    {
+      "id": 22,
+      "name": "Load Core to COOL",
+      "description": null,
+      "source_connection_id": 3,
+      "dest_connection_id": 7,
+      "status": "active",
+      "config": null,
+      "created_at": "2026-03-24T18:09:50.6566667",
+      "updated_at": "2026-03-24T18:09:50.6566667",
+      "created_by": null,
+      "dest_schema": "crm",
+      "project_id": 1,
+      "tags": ["load", "core"],
+      "settings": null,
+      "source_name": "Sql Beta",
+      "source_type": "azure_sql",
+      "dest_name": "COOL Beta",
+      "dest_type": "azure_sql"
+    },
+    {
+      "id": 20,
+      "name": "Load Config to COOL",
+      "description": null,
+      "source_connection_id": 3,
+      "dest_connection_id": 7,
+      "status": "active",
+      "config": null,
+      "created_at": "2026-03-24T18:09:50.65",
+      "updated_at": "2026-03-24T18:09:50.65",
+      "created_by": null,
+      "dest_schema": "config",
+      "project_id": 1,
+      "tags": ["load", "config"],
+      "settings": null,
+      "source_name": "Sql Beta",
+      "source_type": "azure_sql",
+      "dest_name": "COOL Beta",
+      "dest_type": "azure_sql"
+    },
+    {
+      "id": 21,
+      "name": "Extract Core from CRM",
+      "description": null,
+      "source_connection_id": 1,
+      "dest_connection_id": 3,
+      "status": "active",
+      "config": null,
+      "created_at": "2026-03-24T18:09:50.65",
+      "updated_at": "2026-03-24T18:09:50.65",
+      "created_by": null,
+      "dest_schema": "dbo",
+      "project_id": 1,
+      "tags": ["extract", "core"],
+      "settings": null,
+      "source_name": "CRM Beta",
+      "source_type": "dynamics_crm",
+      "dest_name": "Sql Beta",
+      "dest_type": "azure_sql"
+    },
+    {
+      "id": 19,
+      "name": "Extract Config from CRM",
+      "description": null,
+      "source_connection_id": 1,
+      "dest_connection_id": 3,
+      "status": "active",
+      "config": null,
+      "created_at": "2026-03-24T18:09:50.6433333",
+      "updated_at": "2026-03-24T18:09:50.6433333",
+      "created_by": null,
+      "dest_schema": "dbo",
+      "project_id": 1,
+      "tags": ["extract", "config"],
+      "settings": "{\"batch_size\": 1000, \"retry_count\": 0, \"timeout_seconds\": 300, \"track_fks\": true, \"enforce_fks\": true, \"fk_mode\": \"all\", \"notifications_on_failure\": \"\", \"notifications_on_completion\": \"\"}",
+      "source_name": "CRM Beta",
+      "source_type": "dynamics_crm",
+      "dest_name": "Sql Beta",
+      "dest_type": "azure_sql"
+    }
+  ],
+  "mappings": [
+    {
+      "id": 187,
+      "pipeline_id": 26,
+      "source_entity": "OptionSetValues",
+      "dest_table": "RefundTypes",
+      "mapping_config": "{\"columns\": {\"Value\": \"Id\", \"Label\": \"Value\"}, \"load_strategy\": \"replace\", \"distinct\": \"yes\", \"dest_schema\": \"lookup\", \"filters\": [{\"field\": \"FieldName\", \"operator\": \"eq\", \"value\": \"RefundType\"}], \"primary_id\": \"Id\"}",
+      "transform_type": "column_map",
+      "sort_order": 1,
+      "created_at": "2026-03-25T17:30:23.7433333"
+    },
+    {
+      "id": 188,
+      "pipeline_id": 26,
+      "source_entity": "OptionSetValues",
+      "dest_table": "InvoiceDocumentTypes",
+      "mapping_config": "{\"columns\": {\"Value\": \"Id\", \"Label\": \"Value\"}, \"load_strategy\": \"replace\", \"distinct\": \"yes\", \"dest_schema\": \"lookup\", \"filters\": [{\"field\": \"FieldName\", \"operator\": \"eq\", \"value\": \"DocumentType\"}], \"primary_id\": \"Id\"}",
+      "transform_type": "column_map",
+      "sort_order": 2,
+      "created_at": "2026-03-25T17:30:24.2966667"
+    },
+    {
+      "id": 189,
+      "pipeline_id": 26,
+      "source_entity": "Invoices",
+      "dest_table": "Invoices",
+      "mapping_config": "{\"primary_id\": \"InvoiceId\", \"load_strategy\": \"replace\", \"dest_schema\": \"billing\"}",
+      "transform_type": "column_map",
+      "sort_order": 10,
+      "created_at": "2026-03-25T17:30:24.82"
+    },
+    {
+      "id": 190,
+      "pipeline_id": 26,
+      "source_entity": "InvoiceLineItems",
+      "dest_table": "InvoiceLineItems",
+      "mapping_config": "{\"primary_id\": \"InvoiceLineItemId\", \"load_strategy\": \"replace\", \"dest_schema\": \"billing\"}",
+      "transform_type": "column_map",
+      "sort_order": 11,
+      "created_at": "2026-03-25T17:30:25.3333333"
+    },
+    {
+      "id": 191,
+      "pipeline_id": 26,
+      "source_entity": "Refunds",
+      "dest_table": "Refunds",
+      "mapping_config": "{\"primary_id\": \"RefundId\", \"load_strategy\": \"replace\", \"dest_schema\": \"billing\"}",
+      "transform_type": "column_map",
+      "sort_order": 12,
+      "created_at": "2026-03-25T17:30:25.8766667"
+    },
+    {
+      "id": 192,
+      "pipeline_id": 26,
+      "source_entity": "RefundLineItems",
+      "dest_table": "RefundLineItems",
+      "mapping_config": "{\"primary_id\": \"RefundLineItemId\", \"load_strategy\": \"replace\", \"dest_schema\": \"billing\"}",
+      "transform_type": "column_map",
+      "sort_order": 13,
+      "created_at": "2026-03-25T17:30:26.3933333"
+    },
+    {
+      "id": 183,
+      "pipeline_id": 25,
+      "source_entity": "invoice",
+      "dest_table": "Invoices",
+      "mapping_config": "{\"columns\": {\"invoiceid\": \"InvoiceId\", \"salesorderid\": \"OrderId\", \"invoicenumber\": \"InvoiceNumber\", \"dac_confirmationnumber\": \"StripeInvoiceId\", \"totalamount\": \"TotalAmount\", \"dac_amountpaid\": \"AmountPaid\", \"duedate\": \"DueDate\", \"dac_paymentconfirmationdate\": \"PaymentConfirmationDate\", \"statecode\": \"StateCode\", \"statuscode\": \"StatusCode\", \"createdon\": \"CreatedDate\", \"dac_paymentstatus\": \"PaymentStatusId\", \"dac_paymentmessage\": \"PaymentMessage\", \"dac_stripecreateddate\": \"StripeCreatedDate\", \"modifiedon\": \"UpdatedDate\"}, \"filters\": [{\"field\": \"createdon\", \"operator\": \"ge\", \"value\": \"2026-01-01\"}], \"relations\": [{\"name\": \"FK_Invoice_Order\", \"from_column\": \"salesorderid\", \"to_table\": \"salesorder\", \"to_column\": \"salesorderid\"}], \"load_strategy\": \"replace\", \"entity_set_name\": \"invoices\", \"primary_id\": \"invoiceid\", \"lookup_fields\": [\"invoiceid\", \"_salesorderid_value\"], \"dest_schema\": \"dbo\"}",
+      "transform_type": "column_map",
+      "sort_order": 1,
+      "created_at": "2026-03-25T17:30:21.62"
+    },
+    {
+      "id": 184,
+      "pipeline_id": 25,
+      "source_entity": "invoicedetail",
+      "dest_table": "InvoiceLineItems",
+      "mapping_config": "{\"columns\": {\"invoicedetailid\": \"InvoiceLineItemId\", \"invoiceid\": \"InvoiceId\", \"productid\": \"ProductId\", \"priceperunit\": \"UnitPrice\", \"quantity\": \"Quantity\", \"extendedamount\": \"AmountInvoiced\", \"createdon\": \"CreatedDate\"}, \"filters\": [{\"field\": \"createdon\", \"operator\": \"ge\", \"value\": \"2026-01-01\"}], \"relations\": [{\"name\": \"FK_InvoiceDetail_Invoice\", \"from_column\": \"invoiceid\", \"to_table\": \"invoice\", \"to_column\": \"invoiceid\"}], \"load_strategy\": \"replace\", \"entity_set_name\": \"invoicedetails\", \"primary_id\": \"invoicedetailid\", \"lookup_fields\": [\"invoicedetailid\", \"invoiceid\", \"productid\"], \"dest_schema\": \"dbo\"}",
+      "transform_type": "column_map",
+      "sort_order": 2,
+      "created_at": "2026-03-25T17:30:22.1466667"
+    },
+    {
+      "id": 185,
+      "pipeline_id": 25,
+      "source_entity": "dac_refund",
+      "dest_table": "Refunds",
+      "mapping_config": "{\"columns\": {\"dac_refundid\": \"RefundId\", \"dac_salesorderid\": \"OrderId\", \"dac_invoiceid\": \"InvoiceId\", \"dac_name\": \"RefundNumber\", \"dac_refundtype\": \"RefundTypeId\", \"dac_amount\": \"Amount\", \"statecode\": \"StateCode\", \"statuscode\": \"StatusCode\", \"dac_striperefundid\": \"StripeRefundId\", \"dac_processingstatus\": \"ProcessingStatusId\", \"createdon\": \"CreatedDate\", \"modifiedon\": \"UpdatedDate\", \"createdby\": \"CreatedBy\", \"modifiedby\": \"UpdatedBy\"}, \"filters\": [{\"field\": \"createdon\", \"operator\": \"ge\", \"value\": \"2026-01-01\"}], \"relations\": [{\"name\": \"FK_Refund_Order\", \"from_column\": \"dac_salesorderid\", \"to_table\": \"salesorder\", \"to_column\": \"salesorderid\"}, {\"name\": \"FK_Refund_Invoice\", \"from_column\": \"dac_invoiceid\", \"to_table\": \"invoice\", \"to_column\": \"invoiceid\"}], \"load_strategy\": \"replace\", \"entity_set_name\": \"dac_refunds\", \"primary_id\": \"dac_refundid\", \"lookup_fields\": [\"dac_refundid\", \"dac_salesorderid\", \"dac_invoiceid\", \"createdby\", \"modifiedby\"], \"dest_schema\": \"dbo\"}",
+      "transform_type": "column_map",
+      "sort_order": 3,
+      "created_at": "2026-03-25T17:30:22.66"
+    },
+    {
+      "id": 186,
+      "pipeline_id": 25,
+      "source_entity": "dac_refundline",
+      "dest_table": "RefundLineItems",
+      "mapping_config": "{\"columns\": {\"dac_refundlineid\": \"RefundLineItemId\", \"dac_refundid\": \"RefundId\", \"dac_productid\": \"ProductId\", \"dac_name\": \"RefundLineName\", \"dac_quantityinvoiced\": \"QuantityInvoiced\", \"dac_unitprice\": \"UnitPrice\", \"dac_amountinvoiced\": \"AmountInvoiced\", \"dac_refundquantity\": \"RefundQuantity\", \"dac_refundamount\": \"RefundAmount\", \"statecode\": \"StateCode\", \"statuscode\": \"StatusCode\", \"createdon\": \"CreatedDate\", \"modifiedon\": \"UpdatedDate\"}, \"filters\": [{\"field\": \"createdon\", \"operator\": \"ge\", \"value\": \"2026-01-01\"}], \"relations\": [{\"name\": \"FK_RefundLine_Refund\", \"from_column\": \"dac_refundid\", \"to_table\": \"dac_refund\", \"to_column\": \"dac_refundid\"}], \"load_strategy\": \"replace\", \"primary_id\": \"dac_refundlineid\", \"lookup_fields\": [\"dac_refundlineid\", \"dac_refundid\", \"dac_productid\"], \"entity_set_name\": \"dac_refundlines\", \"dest_schema\": \"dbo\"}",
+      "transform_type": "column_map",
+      "sort_order": 4,
+      "created_at": "2026-03-25T17:30:23.2166667"
+    },
+    {
+      "id": 167,
+      "pipeline_id": 24,
+      "source_entity": "OptionSetValues",
+      "dest_table": "Sources",
+      "mapping_config": "{\"columns\": {\"Value\": \"Id\", \"Label\": \"Value\"}, \"load_strategy\": \"replace\", \"distinct\": \"yes\", \"dest_schema\": \"lookup\", \"filters\": [{\"field\": \"FieldName\", \"operator\": \"eq\", \"value\": \"Source\"}], \"primary_id\": \"Id\"}",
+      "transform_type": "column_map",
+      "sort_order": 1,
+      "created_at": "2026-03-25T17:30:13.0666667"
+    },
+    {
+      "id": 168,
+      "pipeline_id": 24,
+      "source_entity": "OptionSetValues",
+      "dest_table": "OrderTypes",
+      "mapping_config": "{\"columns\": {\"Value\": \"Id\", \"Label\": \"Value\"}, \"load_strategy\": \"replace\", \"distinct\": \"yes\", \"dest_schema\": \"lookup\", \"filters\": [{\"field\": \"FieldName\", \"operator\": \"eq\", \"value\": \"OrderType\"}], \"primary_id\": \"Id\"}",
+      "transform_type": "column_map",
+      "sort_order": 2,
+      "created_at": "2026-03-25T17:30:13.5933333"
+    },
+    {
+      "id": 169,
+      "pipeline_id": 24,
+      "source_entity": "OptionSetValues",
+      "dest_table": "OrderDisplaySystems",
+      "mapping_config": "{\"columns\": {\"Value\": \"Id\", \"Label\": \"Value\"}, \"load_strategy\": \"replace\", \"distinct\": \"yes\", \"dest_schema\": \"lookup\", \"filters\": [{\"field\": \"FieldName\", \"operator\": \"eq\", \"value\": \"OrderDisplaySystem\"}], \"primary_id\": \"Id\"}",
+      "transform_type": "column_map",
+      "sort_order": 3,
+      "created_at": "2026-03-25T17:30:14.13"
+    },
+    {
+      "id": 170,
+      "pipeline_id": 24,
+      "source_entity": "OptionSetValues",
+      "dest_table": "OrderStatuses",
+      "mapping_config": "{\"columns\": {\"Value\": \"Id\", \"Label\": \"Value\"}, \"load_strategy\": \"replace\", \"distinct\": \"yes\", \"dest_schema\": \"lookup\", \"filters\": [{\"field\": \"FieldName\", \"operator\": \"eq\", \"value\": \"OrderStatus\"}], \"primary_id\": \"Id\"}",
+      "transform_type": "column_map",
+      "sort_order": 4,
+      "created_at": "2026-03-25T17:30:14.6533333"
+    },
+    {
+      "id": 171,
+      "pipeline_id": 24,
+      "source_entity": "OptionSetValues",
+      "dest_table": "ActionTypes",
+      "mapping_config": "{\"columns\": {\"Value\": \"Id\", \"Label\": \"Value\"}, \"load_strategy\": \"replace\", \"distinct\": \"yes\", \"dest_schema\": \"lookup\", \"filters\": [{\"field\": \"FieldName\", \"operator\": \"eq\", \"value\": \"ActionType\"}], \"primary_id\": \"Id\"}",
+      "transform_type": "column_map",
+      "sort_order": 5,
+      "created_at": "2026-03-25T17:30:15.16"
+    },
+    {
+      "id": 172,
+      "pipeline_id": 24,
+      "source_entity": "OptionSetValues",
+      "dest_table": "EventTypes",
+      "mapping_config": "{\"columns\": {\"Value\": \"Id\", \"Label\": \"Value\"}, \"load_strategy\": \"replace\", \"distinct\": \"yes\", \"dest_schema\": \"lookup\", \"filters\": [{\"field\": \"FieldName\", \"operator\": \"eq\", \"value\": \"EventType\"}], \"primary_id\": \"Id\"}",
+      "transform_type": "column_map",
+      "sort_order": 6,
+      "created_at": "2026-03-25T17:30:15.6966667"
+    },
+    {
+      "id": 173,
+      "pipeline_id": 24,
+      "source_entity": "OptionSetValues",
+      "dest_table": "ActionStatuses",
+      "mapping_config": "{\"columns\": {\"Value\": \"Id\", \"Label\": \"Value\"}, \"load_strategy\": \"replace\", \"distinct\": \"yes\", \"dest_schema\": \"lookup\", \"filters\": [{\"field\": \"FieldName\", \"operator\": \"eq\", \"value\": \"ActionStatus\"}], \"primary_id\": \"Id\"}",
+      "transform_type": "column_map",
+      "sort_order": 7,
+      "created_at": "2026-03-25T17:30:16.22"
+    },
+    {
+      "id": 174,
+      "pipeline_id": 24,
+      "source_entity": "OptionSetValues",
+      "dest_table": "PaymentIntervals",
+      "mapping_config": "{\"columns\": {\"Value\": \"Id\", \"Label\": \"Value\"}, \"load_strategy\": \"replace\", \"distinct\": \"yes\", \"dest_schema\": \"lookup\", \"filters\": [{\"field\": \"FieldName\", \"operator\": \"eq\", \"value\": \"PaymentInterval\"}], \"primary_id\": \"Id\"}",
+      "transform_type": "column_map",
+      "sort_order": 8,
+      "created_at": "2026-03-25T17:30:16.73"
+    },
+    {
+      "id": 175,
+      "pipeline_id": 24,
+      "source_entity": "Orders",
+      "dest_table": "Orders",
+      "mapping_config": "{\"primary_id\": \"OrderId\", \"load_strategy\": \"replace\", \"dest_schema\": \"orders\"}",
+      "transform_type": "column_map",
+      "sort_order": 10,
+      "created_at": "2026-03-25T17:30:17.2533333"
+    },
+    {
+      "id": 176,
+      "pipeline_id": 24,
+      "source_entity": "Orders",
+      "dest_table": "OrderReferrals",
+      "mapping_config": "{\"columns\": {\"OrderId\": \"OrderId\", \"ReferralSource\": \"ReferralSource\", \"ReferralAgentFirstName\": \"AgentFirstName\", \"ReferralAgentLastName\": \"AgentLastName\", \"ReferralAgentCity\": \"AgentCity\", \"ReferralAgentState\": \"AgentState\", \"CreatedDate\": \"CreatedDate\"}, \"load_strategy\": \"replace\", \"dest_schema\": \"orders\"}",
+      "transform_type": "column_map",
+      "sort_order": 11,
+      "created_at": "2026-03-25T17:30:17.7666667"
+    },
+    {
+      "id": 177,
+      "pipeline_id": 24,
+      "source_entity": "Orders",
+      "dest_table": "OrderAgentPaidSearchConfigs",
+      "mapping_config": "{\"columns\": {\"OrderId\": \"OrderId\", \"GeoTargets\": \"GeoTargets\", \"GeoTargetCity\": \"GeoTargetCity\", \"LinesOfBusinessKeywords\": \"LinesOfBusinessKeywords\", \"OtherLanguages\": \"OtherLanguages\", \"MonthlyBudget\": \"MonthlyBudget\", \"CurrentMonthlyBudget\": \"CurrentMonthlyBudget\", \"OperatingBudget\": \"OperatingBudget\", \"ProductLines\": \"ProductLines\", \"Dayparting\": \"Dayparting\", \"Website\": \"Website\", \"HomeGeoTarget\": \"HomeGeoTarget\", \"MarketArea\": \"MarketArea\", \"ImageExtensionHeadshots\": \"ImageExtensionHeadshots\", \"ImageExtensionProducts\": \"ImageExtensionProducts\", \"ImageExtensionProductsList\": \"ImageExtensionProductsList\", \"SpanishKeywords\": \"SpanishKeywords\", \"SpanishGeoTargets\": \"SpanishGeoTargets\", \"SpanishGeoTargetCity\": \"SpanishGeoTargetCity\", \"SpanishLOBExclusions\": \"SpanishLOBExclusions\", \"LifeKeywords\": \"LifeKeywords\", \"SEMLOBExclusions\": \"SEMLOBExclusions\", \"ExcludedZipCodes\": \"ExcludedZipCodes\", \"NewBudget\": \"NewBudget\", \"NewBudgetEffectiveDate\": \"NewBudgetEffectiveDate\", \"LastReportingCall\": \"LastReportingCall\", \"ReportingCallsCompleted\": \"ReportingCallsCompleted\", \"DateOfLastCustomization\": \"DateOfLastCustomization\", \"DetailsOfLastCustomization\": \"DetailsOfLastCustomization\", \"CreatedDate\": \"CreatedDate\", \"UpdatedDate\": \"UpdatedDate\"}, \"load_strategy\": \"replace\", \"dest_schema\": \"orders\"}",
+      "transform_type": "column_map",
+      "sort_order": 12,
+      "created_at": "2026-03-25T17:30:18.3433333"
+    },
+    {
+      "id": 178,
+      "pipeline_id": 24,
+      "source_entity": "Orders",
+      "dest_table": "OrderAgentSocialConfigs",
+      "mapping_config": "{\"columns\": {\"OrderId\": \"OrderId\", \"Instagram\": \"Instagram\", \"Facebook\": \"Facebook\", \"LinkedIn\": \"LinkedIn\", \"SocialContentHighlights\": \"SocialContentHighlights\", \"SocialContentExclusions\": \"SocialContentExclusions\", \"OnlineBusinessPresence\": \"OnlineBusinessPresence\", \"ContentLiveDate\": \"ContentLiveDate\", \"ContentEndDate\": \"ContentEndDate\", \"BrandPersonality\": \"BrandPersonality\", \"AgentTeamMemberOptIn\": \"AgentTeamMemberOptIn\", \"AgentTeamMemberEmailId\": \"AgentTeamMemberEmailId\", \"ClickSendOptIn\": \"ClickSendOptIn\", \"DACMetaAccess\": \"DACMetaAccess\", \"ContentDocsProvided\": \"ContentDocsProvided\", \"CreatedDate\": \"CreatedDate\", \"UpdatedDate\": \"UpdatedDate\"}, \"load_strategy\": \"replace\", \"dest_schema\": \"orders\"}",
+      "transform_type": "column_map",
+      "sort_order": 13,
+      "created_at": "2026-03-25T17:30:18.89"
+    },
+    {
+      "id": 179,
+      "pipeline_id": 24,
+      "source_entity": "Orders",
+      "dest_table": "OrderAgentSEOConfigs",
+      "mapping_config": "{\"columns\": {\"OrderId\": \"OrderId\", \"AutomatedReviewResponsesOptIn\": \"AutomatedReviewResponsesOptIn\", \"AutomatedReviewResponsesOptInDate\": \"AutomatedReviewResponsesOptInDate\", \"SuggestedReviewResponsesOptIn\": \"SuggestedReviewResponsesOptIn\", \"SuggestedReviewResponsesOptInDate\": \"SuggestedReviewResponsesOptInDate\", \"CreatedDate\": \"CreatedDate\", \"UpdatedDate\": \"UpdatedDate\"}, \"load_strategy\": \"replace\", \"dest_schema\": \"orders\"}",
+      "transform_type": "column_map",
+      "sort_order": 14,
+      "created_at": "2026-03-25T17:30:19.4666667"
+    },
+    {
+      "id": 180,
+      "pipeline_id": 24,
+      "source_entity": "Orders",
+      "dest_table": "OrderAgentBrandingConfigs",
+      "mapping_config": "{\"columns\": {\"OrderId\": \"OrderId\", \"ProductLines\": \"ProductLines\", \"GeoTargets\": \"GeoTargets\", \"CreatedDate\": \"CreatedDate\", \"UpdatedDate\": \"UpdatedDate\"}, \"load_strategy\": \"replace\", \"dest_schema\": \"orders\"}",
+      "transform_type": "column_map",
+      "sort_order": 15,
+      "created_at": "2026-03-25T17:30:20.0066667"
+    },
+    {
+      "id": 181,
+      "pipeline_id": 24,
+      "source_entity": "OrderProducts",
+      "dest_table": "OrderProducts",
+      "mapping_config": "{\"primary_id\": \"OrderProductId\", \"load_strategy\": \"replace\", \"dest_schema\": \"orders\"}",
+      "transform_type": "column_map",
+      "sort_order": 20,
+      "created_at": "2026-03-25T17:30:20.5166667"
+    },
+    {
+      "id": 182,
+      "pipeline_id": 24,
+      "source_entity": "OrderActions",
+      "dest_table": "OrderActions",
+      "mapping_config": "{\"primary_id\": \"ActionId\", \"load_strategy\": \"replace\", \"dest_schema\": \"orders\"}",
+      "transform_type": "column_map",
+      "sort_order": 21,
+      "created_at": "2026-03-25T17:30:21.09"
+    },
+    {
+      "id": 164,
+      "pipeline_id": 23,
+      "source_entity": "salesorder",
+      "dest_table": "Orders",
+      "mapping_config": "{\"columns\": {\"salesorderid\": \"OrderId\", \"ordernumber\": \"OrderNumber\", \"customerid\": \"AccountId\", \"name\": \"Name\", \"description\": \"Description\", \"dac_ordertype\": \"OrderTypeId\", \"dac_orderdisplaysystem\": \"OrderDisplaySystemId\", \"statecode\": \"StateCode\", \"statuscode\": \"StatusCode\", \"dac_duration\": \"DurationId\", \"dac_automaticrenewal\": \"AutomaticRenewal\", \"dac_source\": \"SourceId\", \"dac_pricelevelid\": \"PriceLevelId\", \"dac_paymentinterval\": \"PaymentIntervalId\", \"dac_productgroup\": \"ProductGroupId\", \"dac_discountsapplied\": \"DiscountsAppliedId\", \"dac_stripesubscriptionid\": \"StripeSubscriptionId\", \"dac_orderamount\": \"OrderAmount\", \"dac_ordervalue\": \"OrderValue\", \"totalamount\": \"TotalAmount\", \"dac_overduepayment\": \"OverduePayment\", \"dac_paymentinfo\": \"PaymentInfo\", \"dac_program\": \"ProgramId\", \"dac_programtype\": \"ProgramTypeId\", \"dac_programlivedate\": \"ProgramLiveDate\", \"dac_programenddate\": \"ProgramEndDate\", \"dac_firstpaymentdate\": \"FirstPaymentDate\", \"dac_lastpaymentdate\": \"LastPaymentDate\", \"dac_approvaldate\": \"ApprovalDate\", \"dac_signdate\": \"SignDate\", \"dac_signname\": \"SignName\", \"dac_newbudget\": \"NewBudget\", \"dac_newbudgeteffectivedate\": \"NewBudgetEffectiveDate\", \"dac_processingstatus\": \"ProcessingStatusId\", \"dac_productchangeeffectivedate\": \"ProductChangeEffectiveDate\", \"dac_totalsubsidyamt\": \"TotalSubsidyAmt\", \"dac_issuedate\": \"IssueDate\", \"dac_lastorderupdatedate\": \"LastOrderUpdateDate\", \"dac_amountpaidtotal\": \"AmountPaidTotal\", \"dac_annualordervalue\": \"AnnualOrderValue\", \"dac_transactiontoken\": \"TransactionToken\", \"dac_transactionrefnumber\": \"TransactionRefNumber\", \"dac_agenthoodorderid\": \"AgenthoodOrderId\", \"dac_confirmationdate\": \"ConfirmationDate\", \"dac_cancellationdate\": \"CancellationDate\", \"dac_corporatessubsidyinvoiceamount\": \"CorporateSubsidyInvoiceAmount\", \"dac_referralsource\": \"ReferralSource\", \"dac_referralagentfirstname\": \"ReferralAgentFirstName\", \"dac_referralagentlastname\": \"ReferralAgentLastName\", \"dac_referralagentcity\": \"ReferralAgentCity\", \"dac_referralagentstate\": \"ReferralAgentState\", \"dac_geotargets\": \"GeoTargets\", \"dac_geotargetcity\": \"GeoTargetCity\", \"dac_linesofbusinesskeywords\": \"LinesOfBusinessKeywords\", \"dac_otherlanguages\": \"OtherLanguages\", \"dac_newmonthlybudget\": \"MonthlyBudget\", \"dac_currentmonthlybudget\": \"CurrentMonthlyBudget\", \"dac_operatingbudget\": \"OperatingBudget\", \"dac_productlines\": \"ProductLines\", \"dac_dayparting\": \"Dayparting\", \"dac_website\": \"Website\", \"dac_homegeotarget\": \"HomeGeoTarget\", \"dac_marketarea\": \"MarketArea\", \"dac_imageextensionheadshots\": \"ImageExtensionHeadshots\", \"dac_imageextensionproducts\": \"ImageExtensionProducts\", \"dac_imageextensionproductslist\": \"ImageExtensionProductsList\", \"dac_spanishkeywords\": \"SpanishKeywords\", \"dac_spanishgeotargets\": \"SpanishGeoTargets\", \"dac_spanishgeotargetcity\": \"SpanishGeoTargetCity\", \"dac_spanishlobexclusions\": \"SpanishLOBExclusions\", \"dac_lifekeywords\": \"LifeKeywords\", \"dac_semlobexclusions\": \"SEMLOBExclusions\", \"dac_excludedzipcodes\": \"ExcludedZipCodes\", \"dac_lastreportingcall\": \"LastReportingCall\", \"dac_reportingcallscompleted\": \"ReportingCallsCompleted\", \"dac_dateoflastcustomization\": \"DateOfLastCustomization\", \"dac_detailsoflastcustomization\": \"DetailsOfLastCustomization\", \"dac_instagram\": \"Instagram\", \"dac_facebook\": \"Facebook\", \"dac_linkedin\": \"LinkedIn\", \"dac_socialcontenthighlights\": \"SocialContentHighlights\", \"dac_socialcontentexclusions\": \"SocialContentExclusions\", \"dac_onlinebusinesspresence\": \"OnlineBusinessPresence\", \"dac_contentlivedate\": \"ContentLiveDate\", \"dac_contentenddate\": \"ContentEndDate\", \"dac_brandpersonality\": \"BrandPersonality\", \"dac_agentteammemberoptin\": \"AgentTeamMemberOptIn\", \"dac_agentteammemberemailid\": \"AgentTeamMemberEmailId\", \"dac_clicksendoptin\": \"ClickSendOptIn\", \"dac_dacmetaaccess\": \"DACMetaAccess\", \"dac_contentdocsprovided\": \"ContentDocsProvided\", \"dac_automatedreviewresponsesoptin\": \"AutomatedReviewResponsesOptIn\", \"dac_automatedreviewresponsesoptindate\": \"AutomatedReviewResponsesOptInDate\", \"dac_suggestedreviewsresponsesoptin\": \"SuggestedReviewResponsesOptIn\", \"dac_suggestedreviewresponsesoptindate\": \"SuggestedReviewResponsesOptInDate\", \"createdon\": \"CreatedDate\", \"modifiedon\": \"UpdatedDate\", \"createdby\": \"CreatedBy\", \"modifiedby\": \"UpdatedBy\", \"dac_accountnumber\": \"AccountNumber\", \"dac_orderstatus\": \"OrderStatusId\", \"totallineitemamount\": \"TotalLineItemAmount\", \"dac_transactionreferencenumber\": \"TransactionRefNumber2\", \"dac_finishdate\": \"FinishDate\", \"dac_smc\": \"SMCId\", \"dac_copyeditor\": \"CopyEditorId\"}, \"filters\": [{\"field\": \"createdon\", \"operator\": \"ge\", \"value\": \"2026-01-01\"}], \"load_strategy\": \"replace\", \"entity_set_name\": \"salesorders\", \"primary_id\": \"salesorderid\", \"static_values\": {\"CompanyId\": \"1be26bda-061d-492f-ab5f-684b63c2d86d\"}, \"lookup_fields\": [\"salesorderid\", \"customerid\", \"dac_program\", \"dac_programtypeid\", \"dac_pricelevelid\", \"dac_productgroupid\", \"createdby\", \"modifiedby\"], \"dest_schema\": \"dbo\"}",
+      "transform_type": "column_map",
+      "sort_order": 1,
+      "created_at": "2026-03-25T17:30:10.0166667"
+    },
+    {
+      "id": 165,
+      "pipeline_id": 23,
+      "source_entity": "salesorderdetail",
+      "dest_table": "OrderProducts",
+      "mapping_config": "{\"columns\": {\"salesorderdetailid\": \"OrderProductId\", \"salesorderid\": \"OrderId\", \"productid\": \"ProductId\", \"quantity\": \"Quantity\", \"priceperunit\": \"SalesPricePerUnit\", \"manualdiscountamount\": \"ManualDiscount\", \"tax\": \"Tax\", \"extendedamount\": \"TotalAmount\", \"sequencenumber\": \"Sequence\", \"productdescription\": \"ProductName\", \"createdon\": \"CreatedDate\"}, \"relations\": [{\"name\": \"FK_OrderProducts_Order\", \"from_column\": \"salesorderid\", \"to_table\": \"salesorder\", \"to_column\": \"salesorderid\"}, {\"name\": \"FK_OrderProducts_Product\", \"from_column\": \"productid\", \"to_table\": \"product\", \"to_column\": \"productid\"}], \"filters\": [{\"field\": \"createdon\", \"operator\": \"ge\", \"value\": \"2026-01-01\"}], \"load_strategy\": \"replace\", \"entity_set_name\": \"salesorderdetails\", \"primary_id\": \"salesorderdetailid\", \"lookup_fields\": [\"salesorderdetailid\", \"salesorderid\", \"productid\"], \"dest_schema\": \"dbo\"}",
+      "transform_type": "column_map",
+      "sort_order": 2,
+      "created_at": "2026-03-25T17:30:11.06"
+    },
+    {
+      "id": 166,
+      "pipeline_id": 23,
+      "source_entity": "dac_action",
+      "dest_table": "OrderActions",
+      "mapping_config": "{\"columns\": {\"activityid\": \"ActionId\", \"dac_orderid\": \"OrderId\", \"dac_subject\": \"Subject\", \"dac_eventtype\": \"EventTypeId\", \"dac_actiontype\": \"ActionTypeId\", \"dac_productid\": \"ProductId\", \"dac_amount\": \"Amount\", \"dac_effectivedate\": \"EffectiveDate\", \"dac_description\": \"Description\", \"dac_status\": \"StatusId\", \"createdon\": \"CreatedDate\", \"dac_stripesubscriptionid\": \"StripeSubscriptionId\", \"modifiedon\": \"UpdatedDate\", \"createdby\": \"CreatedBy\"}, \"relations\": [{\"name\": \"FK_Actions_Order\", \"from_column\": \"dac_orderid\", \"to_table\": \"salesorder\", \"to_column\": \"salesorderid\"}], \"filters\": [{\"field\": \"createdon\", \"operator\": \"ge\", \"value\": \"2026-01-01\"}], \"load_strategy\": \"replace\", \"entity_set_name\": \"dac_actions\", \"primary_id\": \"activityid\", \"lookup_fields\": [\"activityid\", \"dac_orderid\", \"dac_productid\"], \"dest_schema\": \"dbo\"}",
+      "transform_type": "column_map",
+      "sort_order": 3,
+      "created_at": "2026-03-25T17:30:12.5566667"
+    },
+    {
+      "id": 144,
+      "pipeline_id": 20,
+      "source_entity": "Accounts",
+      "dest_table": "Accounts",
+      "mapping_config": "{\"columns\": {\"CompanyGuid\": \"Id\", \"Code\": \"Code\", \"Name\": \"Name\", \"LogoUrl\": \"LogoUrl\", \"PrimaryDomain\": \"PrimaryDomain\", \"BusinessTypeCode\": \"BusinessTypeCode\", \"DefaultCountry\": \"DefaultCountry\", \"StripeAccountId\": \"StripeAccountId\", \"CrmApiUrl\": \"CrmApiUrl\", \"LpadApiUrl\": \"LpadApiUrl\", \"AuthGuardUrl\": \"AuthGuardUrl\", \"IsActive\": \"IsActive\", \"CreatedDate\": \"CreatedDate\", \"UpdatedDate\": \"UpdatedDate\", \"CreatedBy\": \"CreatedBy\", \"UpdatedBy\": \"UpdatedBy\"}, \"primary_id\": \"Id\", \"load_strategy\": \"replace\", \"dest_schema\": \"config\"}",
+      "transform_type": "direct",
+      "sort_order": 1,
+      "created_at": "2026-03-25T17:29:59.0233333"
+    },
+    {
+      "id": 145,
+      "pipeline_id": 20,
+      "source_entity": "OptionSetValues",
+      "dest_table": "DeploymentStatuses",
+      "mapping_config": "{\"columns\": {\"Value\": \"Id\", \"Label\": \"Value\"}, \"load_strategy\": \"replace\", \"distinct\": \"yes\", \"dest_schema\": \"lookup\", \"filters\": [{\"field\": \"FieldName\", \"operator\": \"eq\", \"value\": \"DeploymentStatus\"}], \"primary_id\": \"Id\"}",
+      "transform_type": "column_map",
+      "sort_order": 2,
+      "created_at": "2026-03-25T17:29:59.5966667"
+    },
+    {
+      "id": 146,
+      "pipeline_id": 20,
+      "source_entity": "OptionSetValues",
+      "dest_table": "GroupTypes",
+      "mapping_config": "{\"columns\": {\"Value\": \"Id\", \"Label\": \"Value\"}, \"load_strategy\": \"replace\", \"distinct\": \"yes\", \"dest_schema\": \"lookup\", \"filters\": [{\"field\": \"FieldName\", \"operator\": \"eq\", \"value\": \"GroupType\"}], \"primary_id\": \"Id\"}",
+      "transform_type": "column_map",
+      "sort_order": 3,
+      "created_at": "2026-03-25T17:30:00.1233333"
+    },
+    {
+      "id": 147,
+      "pipeline_id": 20,
+      "source_entity": "OptionSetValues",
+      "dest_table": "DiscountTypes",
+      "mapping_config": "{\"columns\": {\"Value\": \"Id\", \"Label\": \"Value\"}, \"load_strategy\": \"replace\", \"distinct\": \"yes\", \"dest_schema\": \"lookup\", \"filters\": [{\"field\": \"FieldName\", \"operator\": \"eq\", \"value\": \"DiscountType\"}], \"primary_id\": \"Id\"}",
+      "transform_type": "column_map",
+      "sort_order": 4,
+      "created_at": "2026-03-25T17:30:00.6466667"
+    },
+    {
+      "id": 148,
+      "pipeline_id": 20,
+      "source_entity": "OptionSetValues",
+      "dest_table": "Frequencies",
+      "mapping_config": "{\"columns\": {\"Value\": \"Id\", \"Label\": \"Value\"}, \"load_strategy\": \"replace\", \"distinct\": \"yes\", \"dest_schema\": \"lookup\", \"filters\": [{\"field\": \"FieldName\", \"operator\": \"eq\", \"value\": \"Frequency\"}], \"primary_id\": \"Id\"}",
+      "transform_type": "column_map",
+      "sort_order": 5,
+      "created_at": "2026-03-25T17:30:01.1533333"
+    },
+    {
+      "id": 149,
+      "pipeline_id": 20,
+      "source_entity": "Programs",
+      "dest_table": "Programs",
+      "mapping_config": "{\"primary_id\": \"ProgramId\", \"load_strategy\": \"replace\", \"relations\": [{\"name\": \"FK_Programs_CompanyId\", \"from_column\": \"CompanyId\", \"to_table\": \"Companies\", \"to_column\": \"Id\"}], \"dest_schema\": \"config\"}",
+      "transform_type": "direct",
+      "sort_order": 10,
+      "created_at": "2026-03-25T17:30:01.66"
+    },
+    {
+      "id": 150,
+      "pipeline_id": 20,
+      "source_entity": "ProgramTypes",
+      "dest_table": "ProgramTypes",
+      "mapping_config": "{\"primary_id\": \"ProgramTypeId\", \"load_strategy\": \"replace\", \"dest_schema\": \"config\"}",
+      "transform_type": "direct",
+      "sort_order": 11,
+      "created_at": "2026-03-25T17:30:02.1666667"
+    },
+    {
+      "id": 151,
+      "pipeline_id": 20,
+      "source_entity": "ProductGroups",
+      "dest_table": "ProductGroups",
+      "mapping_config": "{\"primary_id\": \"ProductGroupId\", \"load_strategy\": \"replace\", \"dest_schema\": \"config\"}",
+      "transform_type": "direct",
+      "sort_order": 12,
+      "created_at": "2026-03-25T17:30:02.6966667"
+    },
+    {
+      "id": 152,
+      "pipeline_id": 20,
+      "source_entity": "Products",
+      "dest_table": "Products",
+      "mapping_config": "{\"primary_id\": \"ProductId\", \"load_strategy\": \"replace\", \"dest_schema\": \"config\"}",
+      "transform_type": "direct",
+      "sort_order": 13,
+      "created_at": "2026-03-25T17:30:03.2266667"
+    },
+    {
+      "id": 153,
+      "pipeline_id": 20,
+      "source_entity": "PriceLevels",
+      "dest_table": "PriceLevels",
+      "mapping_config": "{\"primary_id\": \"ProductPriceLevelId\", \"load_strategy\": \"replace\", \"dest_schema\": \"config\"}",
+      "transform_type": "direct",
+      "sort_order": 14,
+      "created_at": "2026-03-25T17:30:03.7733333"
+    },
+    {
+      "id": 154,
+      "pipeline_id": 20,
+      "source_entity": "MerchantPricing",
+      "dest_table": "MerchantPricings",
+      "mapping_config": "{\"primary_id\": \"MerchantPricingId\", \"load_strategy\": \"replace\", \"dest_schema\": \"config\"}",
+      "transform_type": "direct",
+      "sort_order": 15,
+      "created_at": "2026-03-25T17:30:04.61"
+    },
+    {
+      "id": 155,
+      "pipeline_id": 21,
+      "source_entity": "systemuser",
+      "dest_table": "SystemUsers",
+      "mapping_config": "{\"columns\": {\"systemuserid\": \"SystemUserId\", \"fullname\": \"FullName\", \"title\": \"Title\", \"address1_telephone3\": \"PhoneExtension\", \"internalemailaddress\": \"Email\"}, \"filters\": [], \"load_strategy\": \"replace\", \"entity_set_name\": \"systemusers\", \"primary_id\": \"systemuserid\", \"lookup_fields\": [\"systemuserid\"], \"dest_schema\": \"dbo\"}",
+      "transform_type": "column_map",
+      "sort_order": 0,
+      "created_at": "2026-03-25T17:30:05.13"
+    },
+    {
+      "id": 156,
+      "pipeline_id": 21,
+      "source_entity": "account",
+      "dest_table": "Agents",
+      "mapping_config": "{\"columns\": {\"accountid\": \"AccountId\", \"accountnumber\": \"AccountNumber\", \"name\": \"AccountName\", \"emailaddress1\": \"PrimaryEmail\", \"address1_line1\": \"Address1Line1\", \"address1_line2\": \"Address1Line2\", \"address1_line3\": \"Address1Line3\", \"address1_city\": \"Address1City\", \"address1_postalcode\": \"Address1PostalCode\", \"address1_stateorprovince\": \"Address1StateOrProvince\", \"address1_country\": \"Address1Country\", \"ownerid\": \"OwnerId\", \"dac_ownerphoneextension\": \"OwnerPhoneExtension\", \"dac_ownertitle\": \"OwnerTitle\", \"dac_clientreferencecode\": \"ClientReferenceCode\", \"dac_clientreferencecode2\": \"ClientReferenceCode2\", \"dac_ldmid\": \"LdmId\", \"dac_vpa\": \"Vpa\", \"dac_seo2\": \"SEO\", \"dac_stripecustomerid\": \"StripeCustomerId\", \"dac_namepronunciation\": \"NamePronunciation\", \"dac_agentbio\": \"AgentBio\", \"dac_stateagentcode\": \"StateAgentCode\", \"dac_associateid\": \"AssociateId\", \"dac_salesleaderregion\": \"SalesLeaderRegion\", \"dac_marketarea\": \"MarketArea\", \"dac_semclose\": \"SEMClosePercent\", \"dac_dcpclose\": \"DCPClosePercent\", \"dac_whitegloveagent\": \"WhiteGloveAgent\", \"dac_escalationnote\": \"EscalationNote\"}, \"filters\": [{\"field\": \"createdon\", \"operator\": \"ge\", \"value\": \"2026-01-01\"}], \"load_strategy\": \"replace\", \"entity_set_name\": \"accounts\", \"primary_id\": \"accountid\", \"static_values\": {\"CompanyId\": \"1be26bda-061d-492f-ab5f-684b63c2d86d\"}, \"lookup_fields\": [\"accountid\", \"ownerid\"], \"relations\": [{\"name\": \"FK_account_owner\", \"from_column\": \"ownerid\", \"to_table\": \"systemuser\", \"to_column\": \"systemuserid\"}], \"dest_schema\": \"dbo\"}",
+      "transform_type": "column_map",
+      "sort_order": 1,
+      "created_at": "2026-03-25T17:30:05.66"
+    },
+    {
+      "id": 157,
+      "pipeline_id": 21,
+      "source_entity": "contact",
+      "dest_table": "Contacts",
+      "mapping_config": "{\"columns\": {\"contactid\": \"ContactId\", \"firstname\": \"FirstName\", \"lastname\": \"LastName\", \"fullname\": \"FullName\", \"emailaddress1\": \"Email\", \"telephone1\": \"BusinessPhone\", \"dac_contacttype\": \"ContactTypeId\", \"address1_line1\": \"Address1Line1\", \"address1_line2\": \"Address1Line2\", \"address1_line3\": \"Address1Line3\", \"address1_city\": \"Address1City\", \"address1_postalcode\": \"Address1PostalCode\", \"address1_stateorprovince\": \"Address1StateOrProvince\", \"address1_country\": \"Address1Country\", \"parentcustomerid\": \"AccountId\", \"statecode\": \"StateCode\", \"statuscode\": \"StatusCode\", \"createdon\": \"CreatedDate\"}, \"filters\": [{\"field\": \"createdon\", \"operator\": \"ge\", \"value\": \"2026-01-01\"}], \"load_strategy\": \"replace\", \"entity_set_name\": \"contacts\", \"primary_id\": \"contactid\", \"static_values\": {\"CompanyId\": \"1be26bda-061d-492f-ab5f-684b63c2d86d\"}, \"lookup_fields\": [\"contactid\", \"parentcustomerid\"], \"relations\": [{\"name\": \"FK_contact_account\", \"from_column\": \"parentcustomerid\", \"to_table\": \"account\", \"to_column\": \"accountid\"}], \"dest_schema\": \"dbo\"}",
+      "transform_type": "column_map",
+      "sort_order": 2,
+      "created_at": "2026-03-25T17:30:06.1866667"
+    },
+    {
+      "id": 158,
+      "pipeline_id": 21,
+      "source_entity": "dac_account_contact",
+      "dest_table": "AccountContacts",
+      "mapping_config": "{\"columns\": {\"accountid\": \"AccountId\", \"contactid\": \"ContactId\"}, \"filters\": [], \"load_strategy\": \"replace\", \"entity_set_name\": \"dac_account_contactset\", \"is_intersect\": true, \"composite_keys\": [\"accountid\", \"contactid\"], \"depends_on\": [\"account\", \"contact\"], \"lookup_fields\": [\"accountid\", \"contactid\"], \"dest_schema\": \"dbo\"}",
+      "transform_type": "column_map",
+      "sort_order": 99,
+      "created_at": "2026-03-25T17:30:06.7266667"
+    },
+    {
+      "id": 138,
+      "pipeline_id": 19,
+      "source_entity": "dac_program",
+      "dest_table": "Programs",
+      "mapping_config": "{\"columns\": {\"dac_programid\": \"ProgramId\", \"dac_name\": \"ProgramName\", \"dac_code\": \"ProgramCode\", \"dac_abbreviation\": \"ProgramAbbreviation\", \"dac_iconname\": \"IconName\", \"createdon\": \"CreatedOn\", \"modifiedon\": \"ModifiedOn\"}, \"filters\": [], \"load_strategy\": \"replace\", \"entity_set_name\": \"dac_programs\", \"primary_id\": \"dac_programid\", \"static_values\": {\"CompanyId\": \"1be26bda-061d-492f-ab5f-684b63c2d86d\"}, \"relations\": [{\"name\": \"FK_Programs_CompanyId\", \"from_column\": \"CompanyId\", \"to_table\": \"Companies\", \"to_column\": \"Id\"}], \"dest_schema\": \"dbo\"}",
+      "transform_type": "column_map",
+      "sort_order": 0,
+      "created_at": "2026-03-25T17:29:55.61"
+    },
+    {
+      "id": 139,
+      "pipeline_id": 19,
+      "source_entity": "dac_programtype",
+      "dest_table": "ProgramTypes",
+      "mapping_config": "{\"columns\": {\"dac_programtypeid\": \"ProgramTypeId\", \"dac_program\": \"ProgramId\", \"dac_name\": \"Name\", \"dac_description\": \"Description\", \"dac_features\": \"Features\", \"dac_amount\": \"Amount\", \"dac_amount_base\": \"AmountBase\", \"exchangerate\": \"ExchangeRate\", \"dac_merchantpriceid\": \"MerchantPriceId\", \"dac_merchantproductid\": \"MerchantProductId\", \"transactioncurrencyid\": \"TransactionCurrencyId\"}, \"filters\": [], \"load_strategy\": \"replace\", \"entity_set_name\": \"dac_programtypes\", \"primary_id\": \"dac_programtypeid\", \"relations\": [{\"name\": \"FK_ProgramTypes_Program\", \"from_column\": \"ProgramId\", \"to_table\": \"dac_program\", \"to_column\": \"dac_programid\"}], \"lookup_fields\": [\"dac_program\", \"transactioncurrencyid\"], \"dest_schema\": \"dbo\"}",
+      "transform_type": "column_map",
+      "sort_order": 1,
+      "created_at": "2026-03-25T17:29:56.1966667"
+    },
+    {
+      "id": 140,
+      "pipeline_id": 19,
+      "source_entity": "dac_productgroup",
+      "dest_table": "ProductGroups",
+      "mapping_config": "{\"columns\": {\"dac_productgroupid\": \"ProductGroupId\", \"dac_programtype\": \"ProgramTypeId\", \"dac_name\": \"Name\", \"dac_amount\": \"Amount\", \"dac_deploymentstatus\": \"DeploymentStatusId\", \"dac_grouptype\": \"GroupTypeId\", \"dac_discounttype\": \"DiscountTypeId\", \"dac_merchantpriceid\": \"MerchantPriceId\", \"dac_merchantproductid\": \"MerchantProductId\", \"dac_startdate\": \"StartDate\", \"dac_enddate\": \"EndDate\"}, \"filters\": [], \"load_strategy\": \"replace\", \"entity_set_name\": \"dac_productgroups\", \"primary_id\": \"dac_productgroupid\", \"relations\": [{\"name\": \"FK_ProductGroups_ProgramType\", \"from_column\": \"ProgramTypeId\", \"to_table\": \"dac_programtype\", \"to_column\": \"dac_programtypeid\"}], \"lookup_fields\": [\"dac_programtype\", \"dac_program\", \"transactioncurrencyid\"], \"dest_schema\": \"dbo\"}",
+      "transform_type": "column_map",
+      "sort_order": 2,
+      "created_at": "2026-03-25T17:29:56.7733333"
+    },
+    {
+      "id": 141,
+      "pipeline_id": 19,
+      "source_entity": "product",
+      "dest_table": "Products",
+      "mapping_config": "{\"columns\": {\"productid\": \"ProductId\", \"name\": \"ProductName\", \"productnumber\": \"ProductNumber\", \"dac_displayname\": \"DisplayName\", \"description\": \"Description\", \"dac_isdefault\": \"IsDefault\", \"dac_discountvalue\": \"DiscountValue\", \"dac_merchantpriceid\": \"MerchantPriceId\", \"dac_merchantproductid\": \"MerchantProductId\", \"price\": \"Price\", \"dac_program\": \"ProgramId\", \"dac_programtype\": \"ProgramTypeId\", \"dac_productgroup\": \"ProductGroupId\", \"producttypecode\": \"ProductTypeCode\", \"dac_discounttype\": \"DiscountTypeId\", \"statuscode\": \"StatusCode\"}, \"filters\": [], \"load_strategy\": \"replace\", \"entity_set_name\": \"products\", \"primary_id\": \"productid\", \"lookup_fields\": [\"productid\", \"dac_program\", \"dac_programtype\", \"dac_productgroup\"], \"relations\": [{\"name\": \"FK_Products_Program\", \"from_column\": \"ProgramId\", \"to_table\": \"dac_program\", \"to_column\": \"dac_programid\"}, {\"name\": \"FK_Products_ProgramType\", \"from_column\": \"ProgramTypeId\", \"to_table\": \"dac_programtype\", \"to_column\": \"dac_programtypeid\"}], \"dest_schema\": \"dbo\"}",
+      "transform_type": "column_map",
+      "sort_order": 3,
+      "created_at": "2026-03-25T17:29:57.36"
+    },
+    {
+      "id": 142,
+      "pipeline_id": 19,
+      "source_entity": "productpricelevel",
+      "dest_table": "PriceLevels",
+      "mapping_config": "{\"columns\": {\"pricelevelid\": \"PriceLevelId\", \"productpricelevelid\": \"ProductPriceLevelId\", \"productid\": \"ProductId\", \"productnumber\": \"ProductNumber\", \"amount\": \"Amount\", \"amount_base\": \"AmountBase\", \"exchangerate\": \"ExchangeRate\", \"percentage\": \"Percentage\", \"uomid\": \"UomId\", \"transactioncurrencyid\": \"TransactionCurrencyId\"}, \"filters\": [], \"load_strategy\": \"replace\", \"entity_set_name\": \"productpricelevels\", \"primary_id\": \"productpricelevelid\", \"relations\": [{\"name\": \"FK_PriceLevels_Product\", \"from_column\": \"ProductId\", \"to_table\": \"product\", \"to_column\": \"productid\"}], \"lookup_fields\": [\"pricelevelid\", \"productid\", \"transactioncurrencyid\", \"uomid\"], \"dest_schema\": \"dbo\"}",
+      "transform_type": "column_map",
+      "sort_order": 4,
+      "created_at": "2026-03-25T17:29:57.9"
+    },
+    {
+      "id": 143,
+      "pipeline_id": 19,
+      "source_entity": "dac_merchantpricing",
+      "dest_table": "MerchantPricing",
+      "mapping_config": "{\"columns\": {\"dac_merchantpricingid\": \"MerchantPricingId\", \"dac_product\": \"ProductId\", \"dac_productgroup\": \"ProductGroupId\", \"dac_merchantpriceid\": \"MerchantPriceId\", \"dac_merchantproductid\": \"MerchantProductId\", \"dac_name\": \"Name\", \"dac_amount\": \"Amount\", \"dac_amount_base\": \"AmountBase\", \"exchangerate\": \"ExchangeRate\", \"dac_frequency\": \"FrequencyId\", \"dac_sequence\": \"Sequence\", \"transactioncurrencyid\": \"TransactionCurrencyId\"}, \"filters\": [], \"load_strategy\": \"replace\", \"entity_set_name\": \"dac_merchantpricings\", \"primary_id\": \"dac_merchantpricingid\", \"relations\": [{\"name\": \"FK_MerchantPricing_Product\", \"from_column\": \"ProductId\", \"to_table\": \"product\", \"to_column\": \"productid\"}, {\"name\": \"FK_MerchantPricing_ProductGroup\", \"from_column\": \"ProductGroupId\", \"to_table\": \"dac_productgroup\", \"to_column\": \"dac_productgroupid\"}], \"lookup_fields\": [\"dac_product\", \"dac_productgroup\", \"transactioncurrencyid\"], \"dest_schema\": \"dbo\"}",
+      "transform_type": "column_map",
+      "sort_order": 5,
+      "created_at": "2026-03-25T17:29:58.47"
+    },
+    {
+      "id": 159,
+      "pipeline_id": 22,
+      "source_entity": "SystemUsers",
+      "dest_table": "SystemUsers",
+      "mapping_config": "{\"load_strategy\": \"replace\", \"dest_schema\": \"crm\"}",
+      "transform_type": "direct",
+      "sort_order": 0
+    },
+    {
+      "id": 160,
+      "pipeline_id": 22,
+      "source_entity": "OptionSetValues",
+      "dest_table": "ContactTypes",
+      "mapping_config": "{\"columns\": {\"Value\": \"Id\", \"Label\": \"Name\"}, \"load_strategy\": \"replace\", \"dest_schema\": \"lookup\", \"distinct\": true}",
+      "transform_type": "column_map",
+      "sort_order": 1
+    },
+    {
+      "id": 161,
+      "pipeline_id": 22,
+      "source_entity": "Agents",
+      "dest_table": "Agents",
+      "mapping_config": "{\"load_strategy\": \"replace\", \"dest_schema\": \"core\"}",
+      "transform_type": "column_map",
+      "sort_order": 10
+    },
+    {
+      "id": 162,
+      "pipeline_id": 22,
+      "source_entity": "Contacts",
+      "dest_table": "TeamMembers",
+      "mapping_config": "{\"load_strategy\": \"replace\", \"dest_schema\": \"core\"}",
+      "transform_type": "column_map",
+      "sort_order": 11
+    },
+    {
+      "id": 200,
+      "pipeline_id": 22,
+      "source_entity": "Agents",
+      "dest_table": "Locations",
+      "mapping_config": "{\"load_strategy\": \"replace\", \"dest_schema\": \"core\"}",
+      "transform_type": "direct",
+      "sort_order": 12
+    },
+    {
+      "id": 201,
+      "pipeline_id": 22,
+      "source_entity": "AccountContacts",
+      "dest_table": "AgentLocations",
+      "mapping_config": "{\"load_strategy\": \"replace\", \"dest_schema\": \"core\"}",
+      "transform_type": "direct",
+      "sort_order": 20
+    },
+    {
+      "id": 202,
+      "pipeline_id": 22,
+      "source_entity": "AccountContacts",
+      "dest_table": "TeamMemberLocations",
+      "mapping_config": "{\"load_strategy\": \"replace\", \"dest_schema\": \"core\"}",
+      "transform_type": "direct",
+      "sort_order": 21
+    }
+  ],
+  "flows": [
+    {
+      "id": 2,
+      "project_id": 1,
+      "name": "Config Flow",
+      "description": "",
+      "status": "active",
+      "steps": [
+        {
+          "pipeline_id": 19,
+          "x": 162.1652292639195,
+          "y": 282.8345298709735,
+          "depends_on": []
+        },
+        {
+          "pipeline_id": 20,
+          "x": 454.67702338375886,
+          "y": 282.73704099139303,
+          "depends_on": [
+            19
+          ]
+        }
+      ],
+      "created_at": "2026-03-25T17:30:29.34",
+      "updated_at": "2026-03-25T17:30:29.34",
+      "created_by": null
+    },
+    {
+      "id": 1,
+      "project_id": 1,
+      "name": "CRM to COOL Migration",
+      "description": "Full CRM data migration pipeline - Extract from Dynamics CRM, Load to COOL Beta database",
+      "status": "active",
+      "steps": [
+        {
+          "pipeline_id": 19,
+          "x": 50,
+          "y": 50,
+          "depends_on": []
+        },
+        {
+          "pipeline_id": 20,
+          "x": 450,
+          "y": 50,
+          "depends_on": [
+            19
+          ]
+        },
+        {
+          "pipeline_id": 21,
+          "x": 50,
+          "y": 200,
+          "depends_on": []
+        },
+        {
+          "pipeline_id": 22,
+          "x": 450,
+          "y": 200,
+          "depends_on": [
+            21,
+            20
+          ]
+        },
+        {
+          "pipeline_id": 23,
+          "x": 50,
+          "y": 350,
+          "depends_on": []
+        },
+        {
+          "pipeline_id": 24,
+          "x": 450,
+          "y": 350,
+          "depends_on": [
+            23,
+            20
+          ]
+        },
+        {
+          "pipeline_id": 25,
+          "x": 50,
+          "y": 500,
+          "depends_on": []
+        },
+        {
+          "pipeline_id": 26,
+          "x": 450,
+          "y": 500,
+          "depends_on": [
+            25,
+            24
+          ]
+        }
+      ],
+      "created_at": "2026-03-24T18:40:29.0366667",
+      "updated_at": "2026-03-24T18:40:29.0366667",
+      "created_by": null
+    }
+  ]
+}
