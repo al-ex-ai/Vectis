@@ -15,6 +15,11 @@ export default tseslint.config(
     },
     rules: {
       ...reactHooks.configs.recommended.rules,
+      // set-state-in-effect is new in eslint-plugin-react-hooks 7 and errors on 8
+      // existing spots, nearly all the standard "fetch on mount, then setState"
+      // pattern. Warn while that backlog is worked through, rather than pinning
+      // the plugin back to 5 and losing the eslint 10 security fixes.
+      'react-hooks/set-state-in-effect': 'warn',
       'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
       '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_', varsIgnorePattern: '^_' }],
       '@typescript-eslint/no-explicit-any': 'error',
