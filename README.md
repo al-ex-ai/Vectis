@@ -4,20 +4,24 @@ Open source ETL platform with visual flow designer and plugin architecture.
 
 Move data between any data source using visual pipelines, dependency-aware flows, and an extensible plugin system. Built-in connectors for Dynamics 365, SQL Server, and PostgreSQL. Add any data source via the plugin API.
 
+**Live demo:** [vectis.al-ex.ai](https://vectis.al-ex.ai) (read-only, use the demo account button on the sign-in page)
+
+![Vectis flow designer showing a dependency-aware e-commerce sync flow](docs/screenshot.png)
+
 ## Features
 
-- **Visual Flow Designer** — Drag-and-drop pipeline orchestration with React Flow. Define dependencies between pipelines, run in parallel or sequential, track execution in real-time.
-- **Pipeline Builder** — Map entities from source to destination with field-level column control, filters, static values, load strategies (append/replace/upsert/CDC), and batch configuration.
-- **Schema Explorer** — Interactive ER diagram with table nodes, column details, primary keys, and foreign key relationships. Filter by schema, toggle FK visibility.
-- **Scheduling** — Cron-based scheduling for pipelines and flows. Preset patterns (hourly, daily, weekly, monthly), timezone support, overlap policies (skip/queue/allow), run history tracking.
-- **Run Monitoring** — Real-time progress tracking with batch-level transfer logs. Per-record status, error details, run history with duration and record counts.
-- **Connection Management** — Configure and test database connections before use. Supports multiple connection types with credential validation.
-- **Multi-Project** — Organize pipelines, flows, connections, and schedules into isolated projects with per-project dashboards showing stats and recent activity.
-- **Team Management** — Role-based access control with four roles: owner, admin, editor, viewer. User invitations, organization-scoped data isolation.
-- **Plugin Architecture** — Extensible connector and provider system. Built-in Dynamics 365, SQL Server, PostgreSQL. Add custom plugins via pip.
-- **Dashboard** — Project-level overview with connection, pipeline, flow, and active run counts. Recent pipeline and flow run history at a glance.
-- **Dark/Light Themes** — Three theme modes (Vectis dark, light, system dark) with cookie-persisted preference.
-- **Demo Mode** — Read-only deployment mode for showcasing. Blocks all mutations, displays demo credentials on login, configurable via environment variables.
+- **Visual Flow Designer**: Drag-and-drop pipeline orchestration with React Flow. Define dependencies between pipelines, run in parallel or sequential, track execution in real-time.
+- **Pipeline Builder**: Map entities from source to destination with field-level column control, filters, static values, load strategies (append/replace/upsert/CDC), and batch configuration.
+- **Schema Explorer**: Interactive ER diagram with table nodes, column details, primary keys, and foreign key relationships. Filter by schema, toggle FK visibility.
+- **Scheduling**: Cron-based scheduling for pipelines and flows. Preset patterns (hourly, daily, weekly, monthly), timezone support, overlap policies (skip/queue/allow), run history tracking.
+- **Run Monitoring**: Real-time progress tracking with batch-level transfer logs. Per-record status, error details, run history with duration and record counts.
+- **Connection Management**: Configure and test database connections before use. Supports multiple connection types with credential validation.
+- **Multi-Project**: Organize pipelines, flows, connections, and schedules into isolated projects with per-project dashboards showing stats and recent activity.
+- **Team Management**: Role-based access control with four roles: owner, admin, editor, viewer. User invitations, organization-scoped data isolation.
+- **Plugin Architecture**: Extensible connector and provider system. Built-in Dynamics 365, SQL Server, PostgreSQL. Add custom plugins via pip.
+- **Dashboard**: Project-level overview with connection, pipeline, flow, and active run counts. Recent pipeline and flow run history at a glance.
+- **Dark/Light Themes**: Three theme modes (Vectis dark, light, system dark) with cookie-persisted preference.
+- **Demo Mode**: Read-only deployment mode for showcasing. Blocks all mutations, displays demo credentials on login, configurable via environment variables.
 
 ## Tech Stack
 
@@ -49,7 +53,7 @@ cd vectis
 
 # Start databases (3 PostgreSQL instances: app, source test data, destination test data)
 cp docker/.env.example docker/.env
-# Edit docker/.env — set VECTIS_DB_PASSWORD and VECTIS_SECRET_KEY
+# Edit docker/.env: set VECTIS_DB_PASSWORD and VECTIS_SECRET_KEY
 cd docker && docker compose -f docker-compose.dev.yml up -d && cd ..
 
 # Backend
@@ -73,7 +77,7 @@ Open http://localhost:5173. The app seeds demo data automatically on first run.
 
 ```bash
 cp docker/.env.example docker/.env
-# Edit docker/.env — set VECTIS_DB_PASSWORD and VECTIS_SECRET_KEY
+# Edit docker/.env: set VECTIS_DB_PASSWORD and VECTIS_SECRET_KEY
 cd docker && docker compose up
 ```
 
@@ -88,8 +92,8 @@ The dev setup includes three PostgreSQL databases:
 | `dest_warehouse` | 5442 | Test destination with warehouse star-schema tables |
 
 The source database is pre-seeded with realistic data across two schemas:
-- **CRM** — accounts, contacts, deals, products, campaigns, tags with M2M junction tables (contact_accounts, deal_products, campaign_contacts, account_tags, deal_tags)
-- **E-Commerce** — stores, products, variants, categories, collections, customers, orders, wishlists with M2M junction tables (product_categories, product_tags, product_collections, order_items, wishlist_products)
+- **CRM**: accounts, contacts, deals, products, campaigns, tags with M2M junction tables (contact_accounts, deal_products, campaign_contacts, account_tags, deal_tags)
+- **E-Commerce**: stores, products, variants, categories, collections, customers, orders, wishlists with M2M junction tables (product_categories, product_tags, product_collections, order_items, wishlist_products)
 
 ## Project Structure
 
@@ -168,8 +172,8 @@ pip install vectis-connector-hubspot
 | `VECTIS_SECRET_KEY` | Production | Auto-generated in debug | JWT signing key |
 | `VECTIS_DEBUG` | No | `false` | Enable debug mode |
 | `VECTIS_DEMO_MODE` | No | `false` | Read-only demo mode |
-| `VECTIS_DEMO_EMAIL` | No | — | Pre-filled email on login page |
-| `VECTIS_DEMO_PASSWORD` | No | — | Pre-filled password on login page |
+| `VECTIS_DEMO_EMAIL` | No | None | Pre-filled email on login page |
+| `VECTIS_DEMO_PASSWORD` | No | None | Pre-filled password on login page |
 
 ### Frontend
 
